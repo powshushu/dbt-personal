@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+    - name: google_trends
+      description: This is a publicly available dataset from Google hell yea
+      database: bigquery-public-data
+      schema: google_trends
+      tables:
+          - name: top_terms
+            description: Terms by location, week, research date

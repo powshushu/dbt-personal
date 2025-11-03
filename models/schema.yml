@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: combined
+    columns:
+      - name: dma_name
+        data_tests:
+          - not_null
+
+  - name: stg_dma
+    columns:
+      - name: dma_name
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_terms
+    columns:
+      - name: top_term
+        data_tests:
+          - not_null
+      #
+      # - name: status
+      #  data_tests:
+      #    - accepted_values:
+      #        arguments: # available in v1.10.5 and higher. Older versions can set the <argument_name> as the top-level property.
+      #          values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: dma_name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_dma')
+                field: dma_name
